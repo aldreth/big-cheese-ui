@@ -1,19 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const GrantApplications = ({active, changeComponent}) => (
-  <div>
-    <h1>GrantApplications</h1>
-    <br />
-    {active ? 'active' : 'hidden'}
-    <p onClick={() => changeComponent('Home')}>
-      Move to Home
-    </p>
-  </div>
-);
+import GrantApplication from '../GrantApplication/GrantApplication'
+// import Spinner from '../Spinner/Spinner'
 
-GrantApplications.propTypes = {
-  active: React.PropTypes.bool.isRequired,
-  changeComponent: React.PropTypes.func.isRequired,
-};
+class GrantApplications extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displaySpinner: true,
+      grantApplications: []
+    };
+  }
+
+  componentDidMount() {
+    this.loadGrantApplications();
+  }
+
+  loadGrantApplications() {
+    const grantApplicationsUrl = 'http://localhost:3000/admin/grant_applications.json'
+    fetch(grantApplicationsUrl)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          displaySpinner: false,
+          grantApplications: data
+        })
+      })
+      .catch(function(reason) {
+         console.log('something wrong with getting data');
+      });
+  }
+
+  render() {
+    const displaySpinner = this.state.displaySpinner;
+    const grantApplications = this.state.grantApplications;
+    return (
+      <div>
+        <p onClick={() => this.props.changeComponent('Home')} >Home</p>
+        <h1>GrantApplications</h1>
+        {this.props.active ? 'active' : 'hidden'}
+
+        <div className={`grant-applications ${displaySpinner ? 'hide' : 'show'}`} >
+          {grantApplications.map( (grantApplication, idx) => {
+              return <GrantApplication grantApplication={grantApplication} key={idx} />
+            }
+          )}
+        </div>
+      </div>
+    );
+  }
+}
 
 export default GrantApplications;
