@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Home from './Home/Home'
+import GrantApplications from './GrantApplications/GrantApplications'
+import Thanks from './Thanks/Thanks'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeComponent: 'Home',
+    };
+
+    this.setActiveComponent = this.setActiveComponent.bind(this);
+  }
+
+
+  setActiveComponent(componentName) {
+    this.setState({
+      activeComponent: componentName
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Home active={this.state.activeComponent === 'Home'} changeComponent={this.setActiveComponent} />
+        <Thanks active={this.state.activeComponent === 'Thanks' } changeComponent={this.setActiveComponent} />
+        <GrantApplications active={this.state.activeComponent === 'GrantApplications' } changeComponent={this.setActiveComponent} />
       </div>
     );
   }
