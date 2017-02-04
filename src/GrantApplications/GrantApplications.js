@@ -12,8 +12,10 @@ class GrantApplications extends Component {
     };
   }
 
-  componentDidMount() {
-    this.loadGrantApplications();
+  componentDidUpdate() {
+    if (this.props.active) {
+      this.loadGrantApplications();
+    }
   }
 
   loadGrantApplications() {
