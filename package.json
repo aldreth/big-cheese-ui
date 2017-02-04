@@ -8,7 +8,8 @@
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-form": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

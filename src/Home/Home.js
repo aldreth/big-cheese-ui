@@ -1,5 +1,7 @@
 import React from 'react';
 
+import GrantApplicationForm from '../GrantApplicationForm/GrantApplicationForm';
+
 const Home = ({active, changeComponent}) => (
   <div>
     <h1>HOME</h1>
@@ -8,6 +10,7 @@ const Home = ({active, changeComponent}) => (
     <p onClick={() => changeComponent('Thanks')}>
       Move to thanks
     </p>
+    <GrantApplicationForm hello='hello' changeComponent={changeComponent} />
   </div>
 );
 
