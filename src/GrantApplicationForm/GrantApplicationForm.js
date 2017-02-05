@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Text, Textarea } from 'react-form'
 
+import './GrantApplicationForm.css'
+
 const GrantApplicationForm = ({changeComponent}) => (
   <Form
     onSubmit={(values) => {
@@ -27,7 +29,7 @@ const GrantApplicationForm = ({changeComponent}) => (
       return {
         name: !name ? 'A name is required' : undefined,
         postcode: !postcode ? 'A postcode is required' : undefined,
-        amount: !amount ? 'A amount is required' : undefined,
+        amount: !amount || isNaN(parseInt(amount)) ? 'A number is required' : undefined,
         description: !description || description.length > 500 ? 'A description is required and must be less than 500 characters' : undefined
       }
     }}
@@ -36,11 +38,29 @@ const GrantApplicationForm = ({changeComponent}) => (
     {({submitForm}) => {
       return (
         <form onSubmit={submitForm}>
-          <Text field='name' />
-          <Text field='postcode' />
-          <Text field='amount' />
-          <Textarea field='description' />
-          <button type='submit'>Submit</button>
+          <label>
+            <span>Name:</span>
+            <Text field='name' />
+          </label>
+          <br />
+          <label>
+            <span>Postcode:</span>
+            <Text field='postcode' />
+          </label>
+          <br />
+          <label>
+            <span>Amount (in £):</span>
+            <Text field='amount' />
+          </label>
+          <br />
+          <label>
+            <span>Tell us about your cheese:</span>
+            <Textarea rows='8' field='description' />
+          </label>
+          <br />
+
+          <br />
+          <button className='f6 link dim ba ph3 pv2 mb2 dib light-purple bg-transparent b--light-purple' type='submit'>Submit</button>
         </form>
       )
     }}

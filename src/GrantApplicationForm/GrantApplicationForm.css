@@ -1,0 +1,13 @@
+input,
+textarea {
+  line-height: 1.5;
+  width: 30em;
+}
+.FormInput.-hasError input,
+.FormInput.-hasError textarea {
+  border-color: #a463f2;
+}
+
+.FormInput.-hasError .FormError {
+  color: #a463f2;
+}

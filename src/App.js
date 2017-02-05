@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import Home from './Home/Home'
-import GrantApplications from './GrantApplications/GrantApplications'
-import Thanks from './Thanks/Thanks'
+import Header from './Header/Header';
+import Home from './Home/Home';
+import GrantApplications from './GrantApplications/GrantApplications';
+import Thanks from './Thanks/Thanks';
 
 class App extends Component {
   constructor(props) {
@@ -23,11 +24,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Home active={this.state.activeComponent === 'Home'} changeComponent={this.setActiveComponent} />
-        <Thanks active={this.state.activeComponent === 'Thanks' } changeComponent={this.setActiveComponent} />
-        <GrantApplications active={this.state.activeComponent === 'GrantApplications' } changeComponent={this.setActiveComponent} />
-      </div>
+      <section className='main'>
+        <Header changeComponent={this.setActiveComponent} />
+        <main className='pt6'>
+          <Home active={this.state.activeComponent === 'Home'} changeComponent={this.setActiveComponent} />
+          <Thanks active={this.state.activeComponent === 'Thanks' } changeComponent={this.setActiveComponent} />
+          <GrantApplications active={this.state.activeComponent === 'GrantApplications' } changeComponent={this.setActiveComponent} />
+        </main>
+      </section>
     );
   }
 }

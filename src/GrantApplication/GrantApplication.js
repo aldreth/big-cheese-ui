@@ -1,12 +1,12 @@
 import React from 'react';
 
 const GrantApplication = ({grantApplication}) => (
-  <div>
-    <h1>{grantApplication.name}</h1>
-    <p>{grantApplication.postcode}</p>
-    <p>{grantApplication.amount}</p>
-    <p>{grantApplication.description}</p>
-  </div>
+  <tr className="stripe-dark">
+    <td className="pa3">{grantApplication.name}</td>
+    <td className="pa3">{grantApplication.postcode}</td>
+    <td className="pa3">{grantApplication.amount}</td>
+    <td className="pa3">{grantApplication.description}</td>
+  </tr>
 );
 
 GrantApplication.propTypes = {
