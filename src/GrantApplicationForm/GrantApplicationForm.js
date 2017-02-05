@@ -6,7 +6,7 @@ import './GrantApplicationForm.css'
 const GrantApplicationForm = ({changeComponent}) => (
   <Form
     onSubmit={(values) => {
-      const url = 'http://localhost:3000/grant_applications.json'
+      const url = 'https://big-cheese-api.herokuapp.com/grant_applications.json'
       fetch(
         url, {
           method: 'POST',

@@ -17,7 +17,7 @@ class GrantApplications extends Component {
   }
 
   loadGrantApplications() {
-    const grantApplicationsUrl = 'http://localhost:3000/admin/grant_applications.json'
+    const grantApplicationsUrl = 'https://big-cheese-api.herokuapp.com/admin/grant_applications.json'
     fetch(grantApplicationsUrl)
       .then(response => response.json())
       .then(data => {
