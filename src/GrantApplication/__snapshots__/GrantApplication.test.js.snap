@@ -1,0 +1,21 @@
+exports[`test renders correctly 1`] = `
+<tr
+  className="stripe-dark">
+  <td
+    className="pa3">
+    Rita Skeeta
+  </td>
+  <td
+    className="pa3">
+    RS1 4RS
+  </td>
+  <td
+    className="pa3">
+    200
+  </td>
+  <td
+    className="pa3">
+    The cheese is amazing I make it with love and care. And I publicise it in the Daily Prophet.
+  </td>
+</tr>
+`;
